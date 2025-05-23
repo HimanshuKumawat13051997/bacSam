@@ -26,20 +26,6 @@ const addSchool = async (req, res) => {
 const getallSchool = async(req, res) => {
   const {lat, lon} = req.para
   const schools = await School.findAll({
-    // attributes:{
-    //   include: [
-    //     [
-    //       Sequelize.literal(`6371 * acos(
-    //         cos(radians(${lat}))
-    //         * cos(radians(latitude))
-    //         * cos(radians(longitude) - radians(${lon}))
-    //         + sin(radians(${lat})) * sin(radians(latitude))
-    //         )
-    //         `),
-    //         'distance'
-    //     ]
-    //   ]
-    // },
     order: Sequelize.literal(`
         6371 * acos(
           cos(radians(${lat}))
