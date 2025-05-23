@@ -1,9 +1,13 @@
 
 
 export const verifylatandlon = async (req,_, next) =>{
-    const lat = req.cookies?.latitude
-    const lon = req.cookies?.longitude
+    let lat = req.cookies?.latitude
+    let lon = req.cookies?.longitude
 
+    if (!lat && !lon){
+        lat = 77.1234
+        lon = 28.1234
+    }
     req.para = {lat, lon}
     next()
 }
